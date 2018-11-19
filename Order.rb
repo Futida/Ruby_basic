@@ -1,4 +1,4 @@
-class Cart 
+class Order
 
     attr_reader :items
 
@@ -7,5 +7,9 @@ class Cart
     def initialize
       @items = []
     end
-    
+
+    def place
+        #somethig here
+    end
+
 end
