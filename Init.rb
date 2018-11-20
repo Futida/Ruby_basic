@@ -5,16 +5,19 @@ require_relative 'item'
 require_relative 'RealItem'
 require_relative 'VirtualItem'
 
-item1 = VirtualItem.new({ :price => 10, :name => 'tv' })
-item2 = RealItem.new({ :price => 90, :weight => 200, :name => 'kettler' })
+@goods = []
+
+@goods << VirtualItem.new({ :price => 105, :weight => 50, :name => 'tv' })
+@goods << RealItem.new({ :price => 1000, :weight => 10, :name => 'kettler' })
+@goods << RealItem.new({ :price => 2000, :weight => 200, :name => 'table' })
 
 #item2.info { |attr| p attr }
 
 
-cart = Cart.new
-cart.add_item item1
-cart.add_item item2
-p cart.items.size
+#cart = Cart.new
+#cart.add_item item1
+#cart.add_item item2
+#p cart.items.size
 
 #order = Order.new
 #order.add_item item1
