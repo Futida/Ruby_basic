@@ -1,11 +1,10 @@
 require_relative 'string'
 require_relative 'item_container'
-require_relative 'cart'
-require_relative 'order'
 require_relative 'item'
 require_relative 'RealItem'
 require_relative 'VirtualItem'
-
+require_relative 'cart'
+require_relative 'order'
 @goods = []
 
 @goods << VirtualItem.new({ :price => 105, :weight => 50, :name => 'tv' })
