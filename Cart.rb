@@ -4,6 +4,8 @@ class Cart
 
     include ItemContainer
 
+    class ItemNotSupported < StandardError; end
+
     def initialize(owner)
       @items = []
       @owner = owner
@@ -11,17 +13,16 @@ class Cart
 
     def save_to_file
       File.open("#{@owner}_cart.txt", "w") do |f|
-        @items.each { |i| f.puts "#{i.name}:#{i.price}:#{i.weight}" }
+        @items.each do |i|
+          raise ItemNotSupported, 'oops!!!' if i.class == VirtualItem
+          f.puts "#{i.name}:#{i.price}:#{i.weight}" 
+        end
       end
     end
 
     def read_from_file
       return unless File.exists?("#{@owner}_cart.txt")
-      item_fields = File.readlines("#{@owner}_cart.txt")
-      item_fields.map! { |el| el.chomp }
-      item_fields.map! { |el| el.split(":") }
-      item_fields.each { |i| @items << RealItem.new(name: i[0], price: i[1].to_i, weight: i[2].to_i) }
-      @items.uniq!
+      File.readlines("#{@owner}_cart.txt").each { |i| @items << i.to_real_item }
       p @items
     end
     
