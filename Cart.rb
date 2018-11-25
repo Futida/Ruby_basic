@@ -8,7 +8,7 @@ class Cart
 
     UNSUPPORTED_ITEMS = [VirtualItem]
 
-    def initialize(owner)
+    def initialize(owner) 
       @items = []
       @owner = owner
     end

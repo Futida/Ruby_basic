@@ -11,8 +11,23 @@ require_relative 'order'
 @goods << RealItem.new({ :price => 1000, :weight => 10, :name => 'kettler' })
 @goods << RealItem.new({ :price => 2000, :weight => 200, :name => 'table' })
 
-#item2.info { |attr| p attr }
 
+cart = Cart.new('kontantin')
+cart.add_item(RealItem.new({ :price => 1000, :weight => 10, :name => 'car' }))
+cart.add_item(RealItem.new({ :price => 999, :weight => 10, :name => 'car' }))
+cart.add_item(RealItem.new({ :price => 888, :weight => 10, :name => 'kettler' }))
+
+p cart.all_kettlers
+p cart.all_cars
+
+p cart.kind_of?(Cart)
+p @goods[0].kind_of?(Item)
+p @goods[0].class == VirtualItem
+p @goods[0].class == Item
+p @goods[0].respond_to?(:info)
+p @goods[0].send(:tax)
+
+#item2.info { |attr| p attr }
 
 #cart = Cart.new
 #cart.add_item item1
