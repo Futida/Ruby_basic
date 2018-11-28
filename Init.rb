@@ -1,10 +1,5 @@
-require_relative 'string'
-require_relative 'item_container'
-require_relative 'item'
-require_relative 'RealItem'
-require_relative 'VirtualItem'
-require_relative 'cart'
-require_relative 'order'
+require_relative "store_application"
+StoreApplication.config
 @goods = []
 
 @goods << VirtualItem.new({ :price => 105, :weight => 50, :name => 'tv' })
@@ -13,20 +8,20 @@ require_relative 'order'
 
 
 cart = Cart.new('kontantin')
-cart.add_item(RealItem.new({ :price => 1000, :weight => 10, :name => 'car' }))
-cart.add_item(RealItem.new({ :price => 999, :weight => 10, :name => 'car' }))
+cart.add_item(RealItem.new({ :price => 1000, :weight => 120, :name => 'car' }))
+cart.add_item(RealItem.new({ :price => 999, :weight => 130, :name => 'car' }))
 cart.add_item(RealItem.new({ :price => 888, :weight => 10, :name => 'kettler' }))
 
-p cart.all_kettlers
-p cart.all_cars
-
+cart.all_kettlers
+ # cart.all_cars
+=begin
 p cart.kind_of?(Cart)
 p @goods[0].kind_of?(Item)
 p @goods[0].class == VirtualItem
 p @goods[0].class == Item
 p @goods[0].respond_to?(:info)
 p @goods[0].send(:tax)
-
+=end
 #item2.info { |attr| p attr }
 
 #cart = Cart.new

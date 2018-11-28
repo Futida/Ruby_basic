@@ -43,7 +43,9 @@ module ItemContainer
     private
 
         def show_all_items_with_name(name)
-            @items.map { |i| i if name == i.name }.delete_if { |i| i.nil? }
+            @items.reject { |i| i if name != i.name }.map{ |i| i.to_s }
+            # arr = arr.map! { |i| i.to_s }
+            #filtereditems.map { |i| i.to_s }
         end 
 
     def self.included(base)

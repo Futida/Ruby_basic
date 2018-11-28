@@ -17,6 +17,10 @@ class Item
         @real_price = config[:price]
     end
 
+    def to_s
+        p "#{self.name} #{self.price} #{self.weight}"
+    end
+
     def info
         yield price
         yield name
