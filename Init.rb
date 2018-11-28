@@ -1,7 +1,19 @@
 require_relative "store_application"
-StoreApplication.config
-@goods = []
+StoreApplication.config do |app|
+    app.name        = 'store'
+    app.environment = :production
 
+    app.admin do |admin|
+        admin.email = 'admin@admin.com'
+        admin.login = 'admin'
+        admin.send_info_emails_on :mondays
+    end
+end
+
+p StoreApplication.name
+p StoreApplication::Admin.send_info_emails_on 'mondays'
+
+@goods = []
 @goods << VirtualItem.new({ :price => 105, :weight => 50, :name => 'tv' })
 @goods << RealItem.new({ :price => 1000, :weight => 10, :name => 'kettler' })
 @goods << RealItem.new({ :price => 2000, :weight => 200, :name => 'table' })
